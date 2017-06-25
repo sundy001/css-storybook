@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "module": "AMD",
+    "target": "ES6",
+    "outFile": "index.js"
+  },
+  "include": [
+    "src/**/*"
+  ]
+}

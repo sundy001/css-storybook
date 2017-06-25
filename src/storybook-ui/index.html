@@ -11,21 +11,6 @@
   src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
   integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
   crossorigin="anonymous"></script>
-  <script src="../../index.js"></script>
-  <script>
-    for (const block of cs.blocks) {
-      const $block = $(`<li>${block.name}</li>`)
-        .appendTo('#menu');
-
-      if (block.children.length) {
-        $list = $('<ul></ul>')
-        $block.append($list);
-
-        for (const element of block.children) {
-          $list.append(`<li>${element.name}</li>`);
-        }
-      }
-    }
-  </script>
+  <script data-main="../../index" src="../../node_modules/requirejs/require.js"></script>
 </body>
 </html>

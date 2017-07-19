@@ -6,8 +6,8 @@
   "scripts": {
     "tsc": "tsc",
     "tslint": "tslint --force './src/*/**.ts'",
+    "watch": "webpack --watch",
     "build": "nodemon --watch ./src/ --ext ts --exec tsc"
-
   },
   "repository": {
     "type": "git",
@@ -26,11 +26,14 @@
     "babel-preset-stage-2": "^6.24.1",
     "nodemon": "^1.11.0",
     "tslint": "^5.4.3",
-    "typescript": "^2.3.4",
-    "webpack": "^2.4.1"
+    "typescript": "^2.4.1",
+    "webpack": "^2.6.1"
   },
   "dependencies": {
-    "aphrodite": "^1.2.0",
-    "requirejs": "^2.3.3"
+    "aphrodite": "^1.2.1",
+    "parser": "^0.1.4",
+    "pixi.js": "^4.5.3",
+    "requirejs": "^2.3.3",
+    "ts-loader": "^2.2.1"
   }
 }

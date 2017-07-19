@@ -1,6 +1,6 @@
-import { Element } from './element';
-import { Modifier } from './modifier';
-import { Styleable } from './styleable';
+import { Element } from './Element';
+import { Modifier } from './Modifier';
+import { Styleable } from './Styleable';
 
 export class Block extends Styleable {
   public addElement(element: Element) {

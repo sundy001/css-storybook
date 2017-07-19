@@ -1,14 +1,14 @@
 export abstract class Styleable {
-  private children: Styleable[];
-  private parent: Styleable;
-  private _style: any;
+  private _children: Styleable[];
   private _name: string;
+  private _style: object;
+  private _parent: Styleable;
 
   public constructor() {
-    this.children = [];
-    this.parent = null;
-    this.style = null;
-    this.name = '';
+    this._children = [];
+    this._name = '';
+    this._style = null;
+    this._parent = null;
   }
 
   public set name(name: string) {
@@ -19,20 +19,28 @@ export abstract class Styleable {
     return this._name;
   }
 
-  public set style(style) {
-    // TODO:
+  public set style(style: object) {
+    this._style = style;
   }
 
-  public get style(): any {
-    return null;
+  public get style(): object {
+    return this._style;
   }
 
   public getSelector() {
     // TODO:
   }
 
+  public get children(): Styleable[] {
+    return this._children;
+  }
+
+  public get parent(): Styleable {
+    return this._parent;
+  }
+
   protected addChild(child: Styleable) {
-    child.parent = this;
-    this.children.push(child);
+    child._parent = this;
+    this._children.push(child);
   }
 }

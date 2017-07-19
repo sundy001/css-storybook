@@ -3,13 +3,10 @@
 
   "rules": {
     "quotemark": [true, "single", "jsx-single"],
-    "variable-name": {
-      "options": [
-        "ban-keywords",
-        "check-format",
-        "allow-pascal-case",
-        "allow-leading-underscore"
-      ]
-    }
+    "variable-name": [
+      "ban-keywords",
+      "check-format",
+      "allow-leading-underscore"
+    ]
   }
 }

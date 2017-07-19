@@ -1,4 +1,4 @@
-import { Styleable } from './styleable';
+import { Styleable } from './Styleable';
 
 export class Modifier extends Styleable {
   public addElement(element) {

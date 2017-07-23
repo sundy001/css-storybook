@@ -3,9 +3,9 @@ const path = require('path');
 module.exports = {
     entry: './src/index.ts',
     output: {
-        path: path.resolve(__dirname),  
-        filename: 'dist/index.js',
-        publicPath: './',
+        path: path.resolve(__dirname, 'dist'),  
+        filename: 'index.js',
+        publicPath: '/',
     },
     resolve: {
         // Add `.ts` and `.tsx` as a resolvable extension.

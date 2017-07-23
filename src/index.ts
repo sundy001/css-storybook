@@ -1,33 +1,28 @@
 import { CSSStory } from './core/CSSStory';
-import { BEMClassNameGenerator } from './core/BEMClassNameGenerator';
-import { StyleSheetGenerator } from './core/StyleSheetGenerator';
+import NodeFactory from './core/Node/NodeFactory';
 
-const cs = new CSSStory();
+const nodeFactory = new NodeFactory();
+const cs = new CSSStory(nodeFactory);
 
 cs
   .b('modal', { background: 'red' })
     .e('header', { background: 'green' })
     .e('body', { background: 'blue' })
-    .e('footer', { background: 'gray' });
+    .e('footer', { background: 'gray' })
+    .m('small', {})
+      .me('header', {})
+    .m('middle', {})
+      .me('header', {})
+    .g('size', {
+        l: {},
+        s: {},
+        xl: {},
+        xs: {},
+    });
 
-console.dir(cs);
-const nameGenerator: BEMClassNameGenerator = new BEMClassNameGenerator();
-// const styleSheetGenerator: StyleSheetGenerator = new StyleSheetGenerator(nameGenerator);
+cs
+  .m('small')
+    .me('body', {});
 
-// styleSheetGenerator.generate();
-
-declare let $: any;
-for (const block of cs.blocks) {
-  const $block = $(`<li>${block.name}</li>`)
-    .appendTo('#menu');
-
-  if (block.children.length) {
-    let $list = $('<ul></ul>');
-    $block.append($list);
-
-    for (const element of block.children) {
-      $list.append(`<li>${element.name}</li>`);
-      console.log(nameGenerator.getClassName(element));
-    }
-  }
-}
+// console.dir(cs);
+console.log(cs.b('modal').e('header').get());

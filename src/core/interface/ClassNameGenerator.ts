@@ -1,5 +1,5 @@
-import { Styleable } from '../Styleable';
+import StoryNode from '../Node/StoryNode';
 
-export interface ClassNameGenerator {
-  getClassName(classNamable: Styleable): string;
+export default interface IClassNameGenerator {
+  getClassName(classNamable: StoryNode): string;
 }

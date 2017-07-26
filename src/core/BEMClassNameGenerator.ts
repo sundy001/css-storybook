@@ -1,31 +1,49 @@
-// import Element from './Node/Element';
-// import IClassNameGenerator from './Interface/IClassNameGenerator';
-// import Modifier from './Node/Modifier';
-// import Styleable from './Node/Styleable';
+import IClassNameGenerator from './Interface/IClassNameGenerator';
+import Block from './Node/Block';
+import Element from './Node/Element';
+import Modifier from './Node/Modifier';
+import ModifierGroup from './Node/ModifierGroup';
+import StoryNode from './Node/StoryNode';
+import StyleableNode from './Node/StyleableNode';
 
-export class BEMClassNameGenerator {
+type BEMNode = Block | Element | Modifier;
 
-  // public getClassName(classNamable: Styleable): string {
-  //   if (classNamable instanceof Styleable) {
-  //     return this.getStyleableClassName(classNamable);
-  //   }
-  // }
+export default class BEMClassNameGenerator implements IClassNameGenerator {
+  public getClassName(classNamable: StoryNode): string {
+    if (
+      !(classNamable instanceof Block) &&
+      !(classNamable instanceof Element) &&
+      !(classNamable instanceof Modifier)
+    ) {
+      throw new Error('');
+    }
 
-  // private getStyleableClassName(styleable: Styleable): string {
-  //   let currentStyleable: Styleable = styleable;
-  //   let name: string = '';
-  //   do {
-  //     name = currentStyleable.name + name;
+    return this.getStyleableClassName(classNamable);
+  }
 
-  //     if (currentStyleable instanceof Element) {
-  //       name = '__' + name;
-  //     } else if (currentStyleable instanceof Modifier) {
-  //       name = '--' + name;
-  //     }
+  private getStyleableClassName(styleable: BEMNode): string {
+    let node = styleable;
+    let name = '';
 
-  //     currentStyleable = currentStyleable.parent;
-  //   } while (null !== currentStyleable);
+    do {
+      if (node.name === '') {
+        node = node.parent as BEMNode;
+        continue;
+      }
 
-  //   return name;
-  // }
+      name = node.name + name;
+
+      if (node instanceof Element) {
+        name = '__' + name;
+      } else if (node instanceof Modifier) {
+        name = '-' + name;
+      } else if (node instanceof ModifierGroup) {
+        name = '--' + name ;
+      }
+
+      node = node.parent as BEMNode;
+    } while (node !== null);
+
+    return name;
+  }
 }

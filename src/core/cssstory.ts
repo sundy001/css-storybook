@@ -7,7 +7,7 @@ import RootNode from './Node/RootNode';
 import StoryNode from './Node/StoryNode';
 import StyleableNode from './Node/StyleableNode';
 
-export class CSSStory {
+export default class CSSStory {
   private _rootNode: RootNode;
   private currentNode: StoryNode;
   private currentBlock: Block;
@@ -161,6 +161,13 @@ export class CSSStory {
     this.currentModifier.addElement(element);
     this.currentNode = element;
 
+    return this;
+  }
+
+  public doc(docOptions: {
+    title: string;
+    shortDescription?: string;
+  }): CSSStory {
     return this;
   }
 
